@@ -8,10 +8,10 @@ const shortid = require('shortid')
 const app = express();
 
 // Basic Configuration 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT
 
 /** this project needs a db !! **/
-mongoose.connect('mongodb://victor:victor1234@cluster0-shard-00-00-vfoph.mongodb.net:27017,cluster0-shard-00-01-vfoph.mongodb.net:27017,cluster0-shard-00-02-vfoph.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true' || 'mongodb://localhost:27017/url-shortener', {
+mongoose.connect('mongodb://victor:victor1234@cluster0-shard-00-00-vfoph.mongodb.net:27017,cluster0-shard-00-01-vfoph.mongodb.net:27017,cluster0-shard-00-02-vfoph.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', {
   useNewUrlParser: true
 });
 
@@ -68,5 +68,5 @@ app.post("/api/shorturl/new", function (req, res) {
 })
 
 app.listen(port, function () {
-  console.log('Node.js listening ...' + port);
+  console.log('Node.js listening ... ' + port);
 });
