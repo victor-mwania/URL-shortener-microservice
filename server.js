@@ -45,7 +45,7 @@ app.post("/api/shorturl/new", function (req, res) {
   let uri = req.body.url;
   if (valid_url.is_uri(uri)) {
     let code = shortid.generate()
-    let shortUrl = 'https://lty-short.herokuapp.com/' + port + '/' + code
+    let shortUrl = 'https://lty-short.herokuapp.com/'+ code
 
     let url = new Url({
       originalUrl: uri,
