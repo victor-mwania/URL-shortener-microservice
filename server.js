@@ -8,7 +8,7 @@ const shortid = require('shortid')
 const app = express();
 
 // Basic Configuration 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 /** this project needs a db !! **/
 mongoose.connect('mongodb://victor:victor1234@cluster0-shard-00-00-vfoph.mongodb.net:27017,cluster0-shard-00-01-vfoph.mongodb.net:27017,cluster0-shard-00-02-vfoph.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', {
@@ -43,10 +43,9 @@ app.get("/:code", function (req, res) {
 })
 app.post("/api/shorturl/new", function (req, res) {
   let uri = req.body.url;
-  console.log(uri);
   if (valid_url.is_uri(uri)) {
     let code = shortid.generate()
-    let shortUrl = 'http://localhost:' + port + '/' + code
+    let shortUrl = 'https://lty-short.herokuapp.com/' + port + '/' + code
 
     let url = new Url({
       originalUrl: uri,
